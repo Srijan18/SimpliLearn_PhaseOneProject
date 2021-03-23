@@ -63,6 +63,7 @@ public class Authenticate {
 		System.out.println("****************************************");
 		System.out.println("*        Welcome To LockedMe.com		*");
 		System.out.println("*   An App that makes your life easier	*");
+		System.out.println("* Developer: Srijan Saxena(GH:Srijan18) *");		
 		System.out.println("****************************************");
 		System.out.println("*   PLEASE PRESS ENETER TO CONTINUE     *");
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
