@@ -61,7 +61,7 @@ public class Authenticate {
 	public static void welcome_Message() {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
-		System.out.println("*        Welcome To LockedMe.com		*");
+		System.out.println("*        Welcome To LockedMe.com        *");
 		System.out.println("*   An App that makes your life easier	*");
 		System.out.println("* Developer: Srijan Saxena(GH:Srijan18) *");		
 		System.out.println("****************************************");
@@ -257,6 +257,7 @@ public class Authenticate {
 		
 		
 		String ID, record;
+		locker_Input_File.close();
 		
 		
 		File tempoDB = new File("naldrix_db_temp.txt");

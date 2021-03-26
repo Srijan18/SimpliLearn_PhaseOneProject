@@ -11,7 +11,7 @@ public class UserFormat {
 		this.username = username;
 		this.password = password;
 	}
-
+	//Generating getters and setters
 	public String getUsername() {
 		return username;
 	}
@@ -28,6 +28,8 @@ public class UserFormat {
 		this.password = password;
 	}
 
+	
+	//override to-string
 	@Override
 	public String toString() {
 		return "Users [username=" + username + ", password=" + password + "]";
