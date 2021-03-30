@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 //import javax.swing.JOptionPane;
 
+//Declaring the variables
 public class Authenticate {
 	//dbInput data
 	private static Scanner userInput;
@@ -27,6 +28,7 @@ public class Authenticate {
 	private static CredentialsFormat dummyUser;
 	
 	
+	//init_method initiating the instances
 	public static void init_func() {
 		File  dbFile = new File("UserFile.txt");
 		File  lockerFile = new File("CredentialsDataBase.txt");
@@ -57,7 +59,7 @@ public class Authenticate {
 		
 	}
 	
-	
+	// Welcome message pops up when we start the program
 	public static void welcome_Message() {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
@@ -72,7 +74,7 @@ public class Authenticate {
 	}
 	
 
-
+	//sign in page
 	public static void sign_In_Page() throws IOException {
 		boolean menu = true;
 		while(menu) {
@@ -98,6 +100,7 @@ public class Authenticate {
 		}
 	}
 	
+	//login page
 	public static void login_Page() throws IOException {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
@@ -127,7 +130,7 @@ public class Authenticate {
 		
 	}
 
-	
+	// locker details
 	public static void locker_Page(String dbInput_Username) throws IOException{
 		//boolean menu = true;
 		System.out.println();	
@@ -160,7 +163,7 @@ public class Authenticate {
 		//locker_Input_File.close();
 		}
 	}
-	
+	//register program
 	public static void register_Page() throws IOException {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
@@ -193,8 +196,8 @@ public class Authenticate {
 		
 	}
 	
-	//store credentails
-	public static void save_Credentials(String loggedInUser) {
+	//saving_credentials
+	public static void save_Credentials(String loggedInUser) throws IOException {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
 		System.out.println("*     Welcome To Your Secure Locker		*");
@@ -217,12 +220,14 @@ public class Authenticate {
 		userCredentials.setPassword(password);
 		
 		locker_Output_File.println(userCredentials.getLoggedInUser() + "  " +userCredentials.getSiteName() + "  " +userCredentials.getUsername()+ "  " +userCredentials.getPassword());
-		System.out.println("YOUR CREDS ARE STORED AND SECURED!");
-		locker_Output_File.close();		
+		System.out.println("Congratulations, Your Credentials are stored with us");
+		locker_Output_File.close();
+		sign_In_Page();
+		//locker_Page(loggedInUser);
 	}
 	
-	//fetch credentials
-	public static void fetch_Credentials(String dbInput_Username) {
+	//get the credentials
+	public static void fetch_Credentials(String dbInput_Username) throws IOException {
 		System.out.println("!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@!-~@");
 		System.out.println("****************************************");
 		System.out.println("*            Secure Locker    		*");
@@ -251,13 +256,17 @@ public class Authenticate {
 			System.out.println("Sorry We could not find any related credentials");
 			}
 		else System.out.println("These were the only credentials found");
+		sign_In_Page();
+		//locker_Page(dbInput_Username);
 	}
 	
+	//delete credentials
 	public static void deleteCredential(String dbInput_Username) throws IOException {
 		
 		
 		String ID, record;
 		locker_Input_File.close();
+		locker_Output_File.close();
 		
 		
 		File tempoDB = new File("naldrix_db_temp.txt");
@@ -281,7 +290,7 @@ public class Authenticate {
 				continue;
 			
 			
-			System.out.println(record);
+			//System.out.println(record);
 			bw.write(record);
 			bw.flush();
 			bw.newLine();
@@ -294,8 +303,11 @@ public class Authenticate {
 		boolean check1 = realdb.delete();
 		
 		boolean check2 = tempoDB.renameTo(realdb);
-		
-		System.out.println("chechk1 "+ check1 + "check2 " + check2);
+		if (check1 && check2) {
+			System.out.println("We have successfully deleted your credential!!");
+		}
+		else System.out.println("Sorry, Unable to delete your credential!!");
+		System.out.println();
 		init_func();
 		sign_In_Page();
 
