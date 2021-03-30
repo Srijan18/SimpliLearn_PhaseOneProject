@@ -188,8 +188,8 @@ public class Authenticate {
 		
 		dbOutput.println(users.getUsername());
 		dbOutput.println(users.getPassword());
-		File newfile = new File(username+".txt"); 
-		newfile.createNewFile();
+		//File newfile = new File(username+".txt"); 
+		//newfile.createNewFile();
 		System.out.println("Congratulations, You are Successfully registered in our Domain");
 		dbOutput.close();
 		sign_In_Page();
